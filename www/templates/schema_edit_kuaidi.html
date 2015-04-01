@@ -1,0 +1,20 @@
+<div class="control-group">
+	<label class="control-label">选择公司</label>
+<div class="controls">
+<select class="form-control" onchange="make_channel_args(this.options[this.options.selectedIndex].value,0)">
+<option value="">快递公司</option>
+<option value="顺丰">顺丰</option>
+<option value="申通">申通</option>
+<option value="圆通">圆通</option>
+<option value="韵达">韵达</option>
+<option value="天天">天天</option>
+<option value="EMS">EMS</option>
+<option value="中通">中通</option>
+<option value="汇通">汇通</option>
+</select>
+</div>
+</div>
+<div class="control-group">
+	<label class="control-label">快递单号</label>
+	<div class="controls"><input type="text" id="text" class="form-control required-follower" onkeyup="make_channel_args(this.value,1)"/></div>
+</div>

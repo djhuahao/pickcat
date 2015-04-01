@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>抓猫 - 未来的生活方式</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/templates/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/templates/css/global.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?891aca0786f0b1f8db73206eed18c05d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+
+<div class="container">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<a class="brand hidden-phone" href="/">抓猫</a>
+			<ul class="nav navbar-nav">
+				<li <?php if($_module=='msg'){?>class="active"<?php }//if?>><a href="/msg">提醒</a></li>
+				<li <?php if($_module=='schema'){?>class="active"<?php }//if?>><a href="/schema">计划</a></li>
+			</ul>
+			<ul class="nav navbar-nav pull-right">
+               	<li class="hidden-phone"><a href="/article/app">客户端</a></li>
+               	<li class="hidden-phone"><a href="/article">互动</a></li>
+				<li><a href="/user/edit">帐户</a></li>
+				<li><a href="/user/logout">退出</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

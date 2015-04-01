@@ -1,0 +1,31 @@
+name: pickcat
+version: 2
+accesskey: abc
+cron:
+- description: fetch web
+  url: cron.php
+  schedule: 1 6-18/4 * * *
+- description: reactivate
+  url: auto_reactivate.php
+  schedule: 0 0 * * *
+handle:
+- compress: if ( out_header["Content-type"] ~ "text/css" ) compress
+- compress: if ( out_header["Content-type"] ~ "text/javascript" ) compress
+- compress: if ( out_header["Content-type"] ~ "application/octet-stream" ) compress
+- compress: if ( out_header["Content-type"] ~ "text/html" ) compress
+- compress: if ( out_header["Content-type"] ~ "application/zip" ) compress
+- compress: if ( out_header["Content-type"] ~ "application/x-zip-compressed" ) compress
+- compress: if ( out_header["Content-type"] ~ "application/pdf" ) compress
+- compress: if ( out_header["Content-type"] ~ "application/msword" ) compress
+- compress: if ( out_header["Content-type"] ~ "application/vnd.ms-excel" ) compress
+- compress: if ( out_header["Content-type"] ~ "application/vnd.ms-powerpoint" ) compress
+- compress: if ( out_header["Content-type"] ~ "text/plain" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/jpeg" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/png" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/pjpeg" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/gif" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/bmp" ) compress
+- compress: if ( out_header["Content-type"] ~ "application/x-shockwave-flash" ) compress
+- errordoc:  404 /article/404
+- rewrite:  if ( !is_dir() && !is_file() && path ~ "(\w+)/(\w+)(/?)" ) goto "index.php?module=$1&view=$2&%{QUERY_STRING}"
+- rewrite:  if ( !is_dir() && !is_file() && path ~ "(\w+)(/?)" ) goto "index.php?module=$1"

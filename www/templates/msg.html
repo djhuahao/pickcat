@@ -1,0 +1,97 @@
+<?php include "header.html";?>
+<div class="container">
+    <div class="row">
+		<div class="span12">
+			<div id="accordion-323267" class="accordion">
+			<?php $msgs = msg::get_list(array('user_id'=>$_user->user_id,'limit'=>5));?>
+            <?php if($msgs['total']>0){ ?>
+			<?php foreach($msgs['list'] as $k=>$v){ ?>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-323267" href="#accordion-element-<?php echo $v->msg_id;?>"><?php echo $v->title?></a>
+					</div>
+					<div id="accordion-element-<?php echo $v->msg_id;?>" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<?php echo $v->content;?>
+						</div>
+					</div>
+				</div>
+			<?php }//foreach?>
+            <?php }else{ ?>
+                <p class="lead"><a href="/article">为什么我收不到提醒？</a></p>
+            <?php } ?>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+		<p class="muted" style="margin-bottom: 5px;">从推荐的抓取计划开始：</p>
+			<div class="list-group">
+				<a href="/schema/edit/?schema_id=868" class="list-group-item">
+					<h4 class="list-group-item-heading">雨天提醒</h4>
+					<p class="list-group-item-text">
+						栈桥：天气
+						<span>关键词：雨</span>
+					</p>
+				</a>
+				<a href="/schema/edit/?schema_id=6" class="list-group-item">
+					<h4 class="list-group-item-heading">教师体检通知</h4>
+					<p class="list-group-item-text">
+						网址：http://www.wetdz.gov.cn/yqgg/
+						<span>关键词：第一 教师 体检</span>
+					</p>
+				</a>
+				<a href="/schema/edit/?schema_id=1" class="list-group-item">
+					<h4 class="list-group-item-heading">最新进击的巨人</h4>
+					<p class="list-group-item-text">
+						栈桥：动画
+						<span>关键词：进击的巨人 23</span>
+					</p>
+				</a>
+				<a href="/schema/edit/?schema_id=987" class="list-group-item">
+					<h4 class="list-group-item-heading">美剧下载</h4>
+					<p class="list-group-item-text">
+						栈桥：电视剧下载
+						<span>关键词：绝命毒师 12</span>
+					</p>
+				</a>
+				<a href="/schema/edit/?schema_id=872" class="list-group-item">
+					<h4 class="list-group-item-heading">电影下载</h4>
+					<p class="list-group-item-text">
+						栈桥：电影下载
+						<span>关键词：僵尸世界大战</span>
+					</p>
+				</a>
+				<a href="/schema/edit/?schema_id=4" class="list-group-item">
+					<h4 class="list-group-item-heading">拖地机器人</h4>
+					<p class="list-group-item-text">
+						栈桥：导购
+						<span>关键词：mint</span>
+					</p>
+				</a>
+				<a href="/schema/edit/?schema_id=869" class="list-group-item">
+					<h4 class="list-group-item-heading">TA的微博</h4>
+					<p class="list-group-item-text">
+						栈桥：微博
+						<span>关键词：今晚 加班</span>
+					</p>
+				</a>
+				<a href="/schema/edit/?schema_id=870" class="list-group-item">
+					<h4 class="list-group-item-heading">关于日本的新闻</h4>
+					<p class="list-group-item-text">
+						栈桥：新闻
+						<span>关键词：日本</span>
+					</p>
+				</a>
+				<a href="/schema/edit/?schema_id=871" class="list-group-item">
+					<h4 class="list-group-item-heading">快递</h4>
+					<p class="list-group-item-text">
+						栈桥：快递
+						<span>关键词：咸阳</span>
+					</p>
+				</a>
+			</div>
+		</div>
+    </div>
+</div>
+<?php include "footer.html";?>

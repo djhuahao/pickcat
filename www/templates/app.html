@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:wb=“http://open.weibo.com/wb”>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>抓猫 - 未来的生活方式</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--weibo-->
+<meta property="og:type" content="webpage" />
+<meta property="og:url" content="pickcat.sinaapp.com" />
+<meta property="og:title" content="抓猫，这个抓取网页，发送提醒的应用很好用，建议试试" />
+<meta property="og:description" content="这个抓取网页，发送提醒的应用很好用，建议试试" />
+<!--qq-->
+<meta property="qc:admins" content="26533043133314631611006375" />
+<link href="/templates/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/templates/css/global.css" rel="stylesheet">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?891aca0786f0b1f8db73206eed18c05d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<style type="text/css">
+.muted{
+	font-weight:normal;
+}
+hr{
+	margin:0 auto 20px auto;
+}
+
+.index_img{
+	background:url("/templates/img/index.jpg") no-repeat scroll 0 0 transparent;
+	height:600px;
+}
+.main-row{
+	margin-top:70px;
+}
+/* 横向放置的手机和竖向放置的平板之间的分辨率 */
+@media (max-width: 767px) {
+.index_img{
+	background:#fff;
+	height:220px;
+}
+.main-row{
+	margin-top:10px;
+}
+}
+ 
+/* 横向放置的手机及分辨率更小的设备 */
+@media (max-width: 480px) {
+.index_img{
+	background:#fff;
+	height:220px;
+}
+.main-row{
+	margin-top:10px;
+}
+}
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="masthead">
+		<span class="pull-right"><wb:like appkey="4qlB7V" type="simple" skin="silver"></wb:like></span>
+        <h2 class="muted">抓猫</h2>
+      </div>
+	</div>
+	<hr>
+	<div class="container">
+	<div class="row-fluid main-row">
+		<div class="offset2 span3 hidden-phone">
+			<img width="270" height="510" src="/templates/img/andriod.png"/>
+		</div>
+		<div class="span6">
+			<div class="row"><div class="offset1 span11"><h3>终于能方便、准时的收到抓猫提醒了！</h3></div></div>
+			<div class="row" style="margin-top:30px"><div class="offset1 span6"><a class="btn btn-primary btn-large btn-block" href="/contents/pickcat.apk">立即下一个</a></div></div>
+			<div class="row" style="margin-top:20px">
+				<div class="offset1 span11"><p class="muted">拍摄二维码下载：</p><img src="/templates/img/apk_qrcode.jpg"/></div>
+			</div>
+			<div class="row" style="margin-top:20px">
+				<div class="offset1 span11">
+					<a href="http://pickcat.sinaapp.com/contents/pickcat.apk" name="抓猫坏天气提醒" onclick="return wdapi_apkdl_m(this, 'source');" title="通过豌豆荚下载">
+						<img alt="豌豆荚一键安装" src="http://img.wdjimg.com/logo/oneclick-5.png"/>
+					</a>
+				</div>
+			</div>
+			<div class="row" style="margin-top:5px">
+				<div class="offset1 span11">
+					<!--下载按钮开始-->
+					<a title="使用360手机助手安装" href="zhushou360://type=apk&name=抓猫坏天气提醒&icon=http://tp4.sinaimg.cn/1919879611/180/40027192948/1&url=http://pickcat.sinaapp.com/contents/pickcat.apk"><img alt="使用360手机助手安装" src="http://p2.qhimg.com/t011902e6e14d5f2da1.png"></a>
+					<!--下载按钮结束-->
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<hr>
+	<div class="container site-footer" style="padding-top:20px">
+	<ul class="inline hidden-phone">
+	<li><a href="http://weibo.com/u/2602861994" target="_blank"><img src="http://www.sinaimg.cn/blog/developer/wiki/LOGO_16x16.png">官方微博</a></li>
+	<li><a href="/">回首页</a></li>
+	<li>任意网址</li>
+	<?php foreach($_channels as $channel){?>
+	<li><?php echo $channel['name'];?></li>
+	<?php }?>
+	</ul>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="/templates/js/bootstrap.min.js"></script>
+	<script src="/templates/js/global.js"></script>
+	<script src="http://wandoujia.com/api/wdapi.js" type="text/javascript"></script>
+	<script src="http://zhushou.360.cn/script/360mobilemgrdownload.js"></script>
+	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

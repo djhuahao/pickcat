@@ -1,0 +1,57 @@
+<?php include "header.html";?>
+<div class="container">
+	<div class="row">
+		<div class="span9">
+			<form method="post" class="form-horizontal form-inline" action="/user">
+			<fieldset>
+				<legend>账户设置</legend>
+				<div class="control-group">
+					<label class="control-label">昵称</label>
+					<div class="controls"><span class="input uneditable-input"><?php echo $_user->screen_name;?></span></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">邮箱提醒</label>
+					<div class="controls">
+						<div class="input-append">
+							<input type="text" name="email" id="email-append" class="form-control required" placeholder="abc@pickcat.com" value="<?php echo $_user->email;?>"/>
+							<span class="add-on"><input type="checkbox" name="email_notify" value="on" checked /></span>
+						</div>
+					</div>
+				</div>
+				<?php if($_user->baidu_uid){?>
+				<div class="control-group">
+					<label class="control-label">客户端提醒</label>
+					<div class="controls">
+						<div class="input-append">
+							<span class="input uneditable-input">安卓客户端</span>
+							<span class="add-on"><label class="checkbox"><input type="checkbox" name="app_notify" value="on" checked /></label><input type="hidden" name="app_notify_pin" value=1/></span>
+						</div>
+					</div>
+				</div>
+				<?php }//if?>
+				<div class="control-group">
+					<label class="control-label">密码</label>
+					<div class="controls"><input type="password" name="password" id="password" class="form-control required" maxlength="20" /></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">重复密码</label>
+					<div class="controls"><input type="password" name="repeat_password" id="repeat-password" class="form-control required" maxlength="20" /></div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<input type="submit" class="btn btn-primary btn-large form-submit" name="submit_schema" value="保存"/>
+					</div>
+				</div>
+			</fieldset>
+			</form>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="span12">
+			<p class="text-warning"><a href="http://help.mail.10086.cn/statichtml/0/Content/831.html" target="_blank">帮助：如何设置移动139邮箱邮件到达短信通知</a></p>
+		</div>
+	</div>
+</div>
+<script src="/templates/js/validate.js"></script>
+<?php include "footer.html";?>

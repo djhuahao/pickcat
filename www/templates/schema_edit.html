@@ -1,0 +1,124 @@
+<?php include "header.html";?>
+<div class="container">
+	<div class="row">
+		<div class="span7">
+			<form method="post" class="form-horizontal form-inline" action="/schema/edit">
+			<?php $schema = schema::get_one(array('schema_id'=>$_REQUEST['schema_id'])); ?>
+			<?php $channel = $schema->channel?$schema->channel:$_REQUEST['channel'];?>
+			<fieldset>
+				<legend><?php if($channel){echo $_channels[$channel]['name'];}else{?>抓网址<?php }//if?></legend>
+				<div class="control-group">
+					<label class="control-label">标题</label>
+					<div class="controls"><input type="text" name="title" class="form-control required" value="<?php echo $schema->title?$schema->title:$_REQUEST['title'];?>" /></div>
+				</div>
+                <?php if($channel && $_channels[$channel]['schema_edit_inc']){include TEMPLATES_PATH.$_channels[$channel]['schema_edit_inc'];?>
+				<div class="control-group">
+                    <label class="control-label">附加参数</label>
+					<div class="controls"><input type="text" name="url" id="channel_args" class="form-control required-leader" readonly="readonly" value="<?php echo $schema->url;?>" /></div>
+				</div>
+                <?php }elseif(!$channel){?>
+				<div class="control-group">
+					<label class="control-label">网址</label>
+					<div class="controls">
+						<input type="text" name="url" id="url" class="form-control required" placeholder="以http://开头" value="<?php echo $schema->url;?>" />
+					</div>
+				</div>
+                <?php }//if?>
+				<div class="control-group">
+					<label class="control-label">关键词</label>
+					<div class="controls"><input type="text" name="keywords" class="form-control required" placeholder="关键词1 关键词2" value="<?php echo $schema->keywords;?>" /></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">休眠自动激活</label>
+					<div class="controls">
+						<label class="radio"><input type="radio" name="auto_reactivate" <?php if($schema->auto_reactivate=='on'){?>checked<?php }?> value="on"/>是</label>
+						<label class="radio"><input type="radio" name="auto_reactivate" <?php if($schema->auto_reactivate!='on'){?>checked<?php }?> value="off"/>不是</label>
+						<span class="help-inline tooltip-container"><a href="/article" target="_blank" data-placement="right" data-toggle="tooltip" data-original-title="设置自动激活后，休眠的计划会在次日自动激活。建议天气栈桥外的计划选“否”" title="设置自动激活后，休眠的计划会在次日自动激活。建议天气栈桥外的计划选“否”"><i class="icon-question-sign"></i>有什么用？</a></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">状态</label>
+					<div class="controls">
+						<label class="radio"><input type="radio" name="status" <?php if($schema->status != 'off'){?>checked<?php }?> value="on"/>活动</label>
+						<label class="radio"><input type="radio" name="status" <?php if($schema->status == 'off'){?>checked<?php }?> value="off"/>休眠</label>
+					</div>
+				</div>
+				<div class="control-group <?php if($schema->max_num == ''){?>slide-toggle hide<?php }//if?>">
+					<label class="control-label">最大数值</label>
+					<div class="controls"><input type="text" name="max_num" class="form-control" placeholder="大小确定的数字请作为关键词填写" value="<?php echo $schema->max_num;?>" /></div>
+				</div>
+				<div class="control-group <?php if($schema->min_num == ''){?>slide-toggle hide<?php }//if?>">
+					<label class="control-label">最小数值</label>
+					<div class="controls"><input type="text" name="min_num" class="form-control" placeholder="-1000.00~1000.00" value="<?php echo $schema->min_num;?>" /></div>
+				</div>
+				<div class="control-group">
+					<label class="control-label"><button type="button" class="btn btn-info btn-large test_schema form-submit">测试</button></label>
+					<div class="controls">
+					<ul class="inline mtline">
+						<li><input type="submit" class="btn btn-primary btn-large form-submit" name="submit_schema_activate" value="保存并激活"/></li>
+						<li><input type="submit" class="btn btn-info btn-large form-submit" name="submit_schema" value="保存"/></li>
+						<li><button type="button" class="btn btn-info btn-large slideToggler">浮动数值</button></li>
+					</ul>
+					</div>
+				</div>
+			<?php if ($_user->user_id == $schema->user_id) {?>
+			<input type="hidden" name="schema_id" value="<?php echo $schema->schema_id;?>" />
+			<?php }//if?>
+			<input type="hidden" name="channel" value="<?php echo $channel;?>" />
+			</fieldset>
+			</form>
+		</div>
+		<div class="span5 hidden-phone">
+			<?php if($channel==1){?>
+				<h4>关键词“雨”，勾选“自动激活”，每个雨天出门前收到提醒。请为每种天气设置专门的抓取计划</h4>
+				<img src="/templates/img/weather_intro.png"/>
+			<?php }elseif($channel >=2 && $channel <=5){?>
+				<h4>添加最新一集的集数作为关键词更准确</h4>
+				<img src="/templates/img/video_intro.png"/>
+			<?php }elseif($channel == 6){?>
+				<h4>当喜欢的东西降价的时候第一时间收到提醒</h4>
+				<img src="/templates/img/daogou_intro.png"/>
+			<?php }elseif($channel == 7){?>
+				<h4>当最新新闻包含关键词的时候立即提醒我</h4>
+				<img src="/templates/img/news_intro.png"/>
+			<?php }elseif($channel == 8){?>
+				<h4>当指定用户的最新微博包含关键词的时候，提醒我。现在只支持抓取一个微博用户。</h4>
+				<img src="/templates/img/weibo_intro.png"/>
+			<?php }elseif($channel == 10){?>
+				<h4>当快递到达当地的时候通知我。现在只支持抓取一个单号</h4>
+				<img src="/templates/img/kuaidi_intro.png"/>
+			<?php }elseif($channel == 11){?>
+				<h4>当有最新的影视剧可以下载的时候通知我</h4>
+				<img src="/templates/img/video_down_intro.png"/>
+			<?php }elseif($channel == 12){?>
+				<h4>当有最新的影视剧可以下载的时候通知我</h4>
+				<img src="/templates/img/video_intro.png"/>
+			<?php }else{?>
+				<h4>抓猫每固定时间抓取网页一次，内容按时间排列效果最好</h4>
+				<img src="/templates/img/url_intro.png"/>
+			<?php }//if?>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="span12">
+			<p><a href="/article" target="_blank">如何设置关键词</a></p>
+		</div>
+	</div>
+</div>
+
+<div id="message-box" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">操作失败</h3>
+	</div>
+	<div class="modal-body">
+		<p id="myModalBody">您已达到可建立计划的最大值</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+	</div>
+</div>
+
+<script src="/templates/js/validate.js"></script>
+<?php include "footer.html";?>

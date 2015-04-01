@@ -1,0 +1,81 @@
+<?php include "header.html";?>
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>
+							标题
+						</th>
+						<th>
+							网址
+						</th>
+						<th>
+							关键词
+						</th>
+						<th>
+							状态
+						</th>
+						<th>
+							<a href="/schema/edit" class="btn btn-info new_schema">新建</a>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php $schemas = schema::get_list(array('user_id'=>$_user->user_id,'limit'=>10));?>
+					<?php foreach($schemas['list'] as $k=>$v){ ?>
+					<tr>
+						<td>
+							<a href="/schema/edit/?schema_id=<?php echo $v->schema_id;?>" ><?php echo $v->title;?></a>
+						</td>
+						<td>
+							<?php if($v->channel){echo $_channels[$v->channel]['name'];}else{?><a href="<?php echo $v->url;?>" target="_blank"><?php echo substr($v->url,0,25).'...';?></a><?php }//if?>
+						</td>
+						<td>
+							<?php echo $v->keywords;?>
+						</td>
+						<td>
+							<?php if($v->status == 'on'){?>活动<?php }else{?>休眠<?php }?>
+						</td>
+						<td>
+                            <a href="/schema/edit/?schema_id=<?php echo $v->schema_id;?>">编辑</a>
+                            <a href="/schema/del/?schema_id=<?php echo $v->schema_id;?>">删除</a>
+                        </td>
+					</tr>
+					<?php }//foreach?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			<div class="panel panel-info">
+				<div class="panel-heading"><h3 class="panel-title">栈桥</h3></div>
+				<div class="panel-body">
+					<ul class="inline mtline">
+					<li><a href="/schema/edit" class="btn btn-large btn-info new_schema">任意网址</a></li>
+					<?php foreach($_channels as $channel => $v){ ?>
+					<li><a href="/schema/edit/?channel=<?php echo $channel;?>&title=<?php echo $v['name'];?>" class="btn btn-large btn-info new_schema"><?php echo $v['name'];?></a></li>
+					<?php }//foreach?>
+					</ul>
+				</div>
+			</div>
+			</fieldset>
+		</div>
+	</div>
+</div>
+
+<div id="message-box" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">操作失败</h3>
+	</div>
+	<div class="modal-body">
+		<p>您已达到可建立计划的最大值</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+	</div>
+</div>
+<?php include "footer.html";?>

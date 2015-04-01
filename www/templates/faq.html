@@ -1,0 +1,60 @@
+<?php include "header.html";?>
+<div class="container">
+	<div class="row">
+        <div class="span4">
+            <ul class="nav nav-tabs nav-stacked">
+				<li><a data-toggle="tab" href="#comment">留言</a></li>
+				<li><a data-toggle="tab" href="#auto_reactivate">什么是自动激活</a></li>
+                <li><a data-toggle="tab" href="#keywords">如何设置关键词</a></li>
+                <li><a data-toggle="tab" href="#info">请将帐户和计划信息填写完整</a></li>
+                <li><a data-toggle="tab" href="#time">抓猫每4个小时抓取网页一次</a></li>
+				<li><a data-toggle="tab" href="#login">需要登录的网页抓取不到</a></li>
+    		</ul>
+        </div>
+		<div class="span8">
+		<div id="myTabContent" class="tab-content">
+			<div class="tab-pane fade in active" id="comment">
+				<!-- Duoshuo Comment BEGIN -->
+					<div class="ds-thread"></div>
+					<script type="text/javascript">
+					var duoshuoQuery = {short_name:"pickcat"};
+						(function() {
+							var ds = document.createElement('script');
+							ds.type = 'text/javascript';ds.async = true;
+							ds.src = 'http://static.duoshuo.com/embed.js';
+							ds.charset = 'UTF-8';
+							(document.getElementsByTagName('head')[0] 
+							|| document.getElementsByTagName('body')[0]).appendChild(ds);
+						})();
+					</script>
+				<!-- Duoshuo Comment END -->
+			</div>
+			<div class="tab-pane fade" id="auto_reactivate">
+				<h3>什么是自动激活</h3>
+                <p>这个功能原来是专为天气栈桥做的。一般的计划，如果抓到了，就会停止抓取，如果设置了自动激活，第二天还会继续抓取。这样不用设置就能每天都收到提醒。为了避免重复提醒骚扰用户，<span class="text-warning">除天气栈桥外的其他计划都建议不要自动激活</span>。</p>
+				<img src="/templates/img/faq_login.jpg"/>
+			</div>
+			<div class="tab-pane fade" id="keywords">
+				<h3>如何设置关键词</h3>
+				<p>抓猫按照“且”原则匹配关键词，即当网页出现了关键词A且同时出现关键词B的时候才会抓取。例如配图中的天气计划只有在“雨转暴风”的时候才提醒。如果希望雨天或者暴风天都发送提醒的话，请建立两个抓取计划。<span class="text-warning">下面这种情况是不会被抓去到的。</span>另外，建议每个计划的关键词不要超过3个。</p>
+				<img src="/templates/img/faq_keywords.jpg"/>
+            </div>
+			<div class="tab-pane fade" id="info">
+				<h3>请将帐户和计划信息填写完整</h3>
+				<p>请在帐户里查看是否填写了邮箱。另外很多用户没有将抓取计划填写完整，抓猫考虑到用户可能作为草稿，不会强制用户填写。但是信息不完整的计划不会被执行。</p>
+				<img src="/templates/img/faq_info.jpg"/>
+            </div>
+			<div class="tab-pane fade" id="time">
+				<h3>抓猫每4个小时抓取网页一次</h3>
+				<p>抓猫从上午6点到傍晚18点每4个小时抓取网页一次，所以请耐心等待，或许上一次抓取刚刚结束。</p>
+            </div>
+			<div class="tab-pane fade" id="login">
+				<h3>需要登录的网页抓猫抓取不到</h3>
+				<p>类似微博或者贴吧这些需要登录才能看到的内容，以及京东商品价格这类动态生成的内容，抓猫暂时不能抓取。如果是抓取微博的内容请使用<a href="/schema/edit/?channel=8&title=%E5%BE%AE%E5%8D%9A">微博栈桥</a>。</p>
+				<img src="/templates/img/faq_login.jpg"/>
+			</div>
+		</div>
+        </div>
+	</div>
+</div>
+<?php include "footer.html";?>
