@@ -36,14 +36,14 @@ define('DB_USER',SAE_MYSQL_USER);
 define('DB_PASSWORD',SAE_MYSQL_PASS);
 define('DB_HOST',SAE_MYSQL_HOST_M.':'.SAE_MYSQL_PORT);
 define('CACHE_PATH',SAE_TMP_PATH.'/');
-define('WB_AUTH','trejob@126.com:041654690lin');
-define( "WB_AKEY" , '2745147607' );
-define( "WB_SKEY" , '358af73d5fe7f966c20c6abab2483afe' );
-define( "WB_CALLBACK_URL" , 'http://pickcat.sinaapp.com/index.php?weibo_login=weibo_login' );
+define('WB_AUTH','user:pass');
+define( "WB_AKEY" , 'WB_AKEY' );
+define( "WB_SKEY" , 'WB_SKEY' );
+define( "WB_CALLBACK_URL" , 'WB_CALLBACK_URL' );
 //sae--------------------------------
 
-define('baidu_apiKey' , "SgUA4nYPkKbHXwWVREOtmGEK");
-define('baidu_secretKey' , "IlRcOjpFFNEH7UcWNECZIgwjxtI4ter0");
+define('baidu_apiKey' , "baidu_apiKey");
+define('baidu_secretKey' , "baidu_secretKey");
 //baidu------------------------------
 
 $_channels = array(
